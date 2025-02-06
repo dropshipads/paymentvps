@@ -1,0 +1,103 @@
+/* Reset một số thuộc tính mặc định của trình duyệt */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cài đặt nền và phông chữ chung */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f7fc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Phần chứa nội dung chính */
+.container {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Tiêu đề trang */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2b2b2b;
+}
+
+/* Input để người dùng nhập IP */
+input {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Thay đổi màu sắc input khi có focus */
+input:focus {
+    border-color: #4A90E2;
+}
+
+/* Nút tạo mã QR */
+button {
+    background-color: #4A90E2;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357ABD;
+}
+
+/* Mã QR sẽ có kích thước linh hoạt */
+#qrContainer img {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Hiển thị thời gian đếm ngược */
+#countdown {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #d9534f;
+    font-weight: bold;
+}
+
+/* Thêm một số hiệu ứng cho phần tử */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Áp dụng hiệu ứng fade-in cho các phần tử chính */
+.container, h1, input, button {
+    animation: fadeIn 0.8s ease-in-out;
+}

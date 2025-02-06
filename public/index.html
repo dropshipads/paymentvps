@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán VPS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Thanh toán VPS</h1>
+        <input type="text" id="ipInput" placeholder="Nhập IP của VPS">
+        <button id="generateQR">Tạo mã QR</button>
+        <div id="qrContainer"></div>
+        <p id="countdown"></p>
+
+        <!-- Nút "Đã thanh toán" chỉ hiển thị sau khi tạo mã QR -->
+        <button id="paidBtn" style="display: none;" onclick="confirmPayment()">Đã thanh toán</button>
+
+        <!-- Hiển thị thông báo sau khi người dùng nhấn nút -->
+        <p id="paymentStatus"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
