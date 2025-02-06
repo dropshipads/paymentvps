@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+const path = require("path"); // Thêm thư viện path
 const app = express();
 const port = 3000;
 
@@ -113,7 +114,12 @@ app.post("/paymentStatus", express.json(), (req, res) => {
 });
 
 // Phục vụ các tệp tĩnh (frontend)
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public"))); // Sử dụng path.join để đảm bảo đường dẫn đúng
+
+// Đảm bảo khi truy cập trang chủ sẽ trả về tệp index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 // Cài đặt webhook (bắt đầu lắng nghe tin nhắn phản hồi từ Telegram)
 app.post("/setWebhook", (req, res) => {
