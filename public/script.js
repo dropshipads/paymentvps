@@ -3,28 +3,28 @@ document.getElementById("generateQR").addEventListener("click", function () {
   if (ip) {
     // Gửi yêu cầu lấy giá VPS từ backend
     fetch(`/getPrice/${ip}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Mã lỗi " + response.status); // Kiểm tra nếu phản hồi không OK
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data.price) {
-          // Tạo mã QR với dữ liệu giá VPS
           const qrLink = `https://img.vietqr.io/image/TPB-03082410101-compact2.png?amount=${data.price}&addInfo=thanhtoan&accountName=Le%20Duc%20Thinh`;
           document.getElementById(
             "qrContainer"
           ).innerHTML = `<img src="${qrLink}" alt="QR Code">`;
-
-          // Bắt đầu đếm ngược thời gian 5 phút
           startCountdown();
-
-          // Hiển thị nút "Đã thanh toán"
           document.getElementById("paidBtn").style.display = "inline-block";
-
-          // Lưu thông tin IP và giá để dùng khi thanh toán
           window.paymentData = { ip, price: data.price };
         } else {
           alert("IP không hợp lệ.");
         }
       })
-      .catch((error) => console.error("Lỗi:", error));
+      .catch((error) => {
+        console.error("Lỗi:", error);
+      });
   } else {
     alert("Vui lòng nhập IP");
   }

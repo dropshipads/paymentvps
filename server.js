@@ -92,7 +92,7 @@ function sendPaymentStatusToWeb(ip, status) {
   console.log(`Sending payment status: ${status} for IP: ${ip}`); // Debug log
 
   axios
-    .post("https://dq264q5l-3000.asse.devtunnels.ms/paymentStatus", {
+    .post("https://paymentvps.vercel.app/paymentStatus", {
       ip,
       status,
     })
@@ -119,7 +119,7 @@ app.use(express.static("public"));
 app.post("/setWebhook", (req, res) => {
   axios
     .post(
-      `https://api.telegram.org/bot7860571662:AAH8nOTFpadyMUAngFrzkjBVcit64-szFB4/setWebhook?url=https://dq264q5l-3000.asse.devtunnels.ms/webhook`
+      `https://api.telegram.org/bot7860571662:AAH8nOTFpadyMUAngFrzkjBVcit64-szFB4/setWebhook?url=https://paymentvps.vercel.app/webhook`
     )
     .then((response) => {
       console.log("Webhook set successfully:", response.data); // Debug log
